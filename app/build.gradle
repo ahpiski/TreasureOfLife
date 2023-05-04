@@ -22,6 +22,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    // https://mavenlibs.com/maven/dependency/com.beust/jcommander
+    implementation 'com.beust:jcommander:1.82'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
