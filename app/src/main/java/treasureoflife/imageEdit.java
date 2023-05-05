@@ -7,12 +7,15 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.Font;
 import javax.imageio.ImageIO;
+import java.io.InputStream;
 import treasureoflife.calculateDate;
 
 public class imageEdit {
-    public void createImg(String templatePath ,String dateStr) throws IOException , Exception {
+    public void createImg(String dateStr ,String outputPath) throws IOException , Exception {
 
-        BufferedImage image = ImageIO.read(new File(templatePath));
+        ClassLoader classLoader = imageEdit.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("template.png");
+        BufferedImage image = ImageIO.read(inputStream);
         Graphics2D barDraw = image.createGraphics();
         Graphics2D percentWrite = image.createGraphics();
         barDraw.setColor(Color.GRAY);
@@ -24,7 +27,7 @@ public class imageEdit {
             System.err.println(calculatedate.checkDate(dateStr));
             System.exit(1);
         }
-        double[] statusBars = calculatedate.barsStatus(calculatedate.timeHasPassed(dateStr), calculatedate.yearRemaining(dateStr)); 
-        
+        double[] statusBars = calculatedate.barsStatus(calculatedate.timeHasPassed(dateStr), calculatedate.yearRemaining(dateStr));
+        ImageIO.write(image , "png" , new File(outputPath));
     }
 }

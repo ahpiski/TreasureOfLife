@@ -2,8 +2,12 @@ package treasureoflife;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.JCommander;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.File;
 import treasureoflife.imageEdit;
 class TreasureOfLife{
     @Parameter(
@@ -27,7 +31,7 @@ class TreasureOfLife{
     )
     private String savePath = "" ;
 
-    public static void main(String[] argv){
+    public static void main(String[] argv) throws IOException , Exception {
         TreasureOfLife treasureOfLife = new TreasureOfLife();
         JCommander.newBuilder()
             .addObject(treasureOfLife)
@@ -39,9 +43,10 @@ class TreasureOfLife{
         }
         else if(treasureOfLife.checkPathCorrect(treasureOfLife.savePath) && treasureOfLife.checkDateCorrect(treasureOfLife.dateOfBirth)){
           imageEdit imageedit = new imageEdit();
-          //do task
+          imageedit.createImg(Integer.toString(treasureOfLife.dateOfBirth) , treasureOfLife.CreateFileIfPathIsDir(treasureOfLife.savePath));
           System.exit(0);
         }
+
         else if(treasureOfLife.savePath == "" && treasureOfLife.dateOfBirth == 0){
           System.out.println("use -h or --help to get help :)");
           System.exit(1);
@@ -66,8 +71,18 @@ class TreasureOfLife{
         if(String.valueOf(Date).length() != 8) return false;
         return true;
     }
-    private boolean checkPathCorrect(String path){
-      if(path == "") return true;
-      return Files.isWritable(Path.of(path));
+    private boolean checkPathCorrect(String pathString){
+      if(pathString == "") return true;
+      Path path = Paths.get(pathString);
+      return Files.isWritable(path);
+    }
+    private String CreateFileIfPathIsDir(String pathString) throws IOException {
+        File file = new File(pathString);
+        if(file.isDirectory()){
+            File outputFile = new File(file , "output.png");
+            outputFile.createNewFile();
+            return outputFile.getPath();
+        }
+        return pathString;
     }
 }
