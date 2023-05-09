@@ -12,7 +12,7 @@ import treasureoflife.calculateDate;
 
 public class imageEdit {
     public void createImg(String dateStr ,String outputPath) throws IOException , Exception {
-
+        if(outputPath == "") outputPath = "./output.png";
         ClassLoader classLoader = imageEdit.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("template.png");
         BufferedImage image = ImageIO.read(inputStream);
@@ -22,12 +22,12 @@ public class imageEdit {
         percentWrite.setColor(Color.GRAY);
         percentWrite.setFont(Font.decode(null).deriveFont(Font.PLAIN, 20));
 
-        calculateDate calculatedate = new calculateDate();
-        if(calculatedate.checkDate(dateStr) != ""){
-            System.err.println(calculatedate.checkDate(dateStr));
+        calculateDate cd = new calculateDate();
+        if(cd.checkDate(dateStr) != ""){
+            System.err.println(cd.checkDate(dateStr));
             System.exit(1);
         }
-        double[] statusBars = calculatedate.barsStatus(calculatedate.timeHasPassed(dateStr), calculatedate.yearRemaining(dateStr));
+        double[] statusBars = cd.barsStatus(cd.SeperatedDate(dateStr), cd.yearRemaining(dateStr));
         ImageIO.write(image , "png" , new File(outputPath));
     }
 }

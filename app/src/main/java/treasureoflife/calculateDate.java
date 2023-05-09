@@ -15,7 +15,7 @@ public class calculateDate {
         if(date.isAfter(present)) return "isAfter";
         return ""; // = no error
     }
-    public int[] timeHasPassed(String dateStr) throws Exception{
+    public int[] SeperatedDate(String dateStr) throws Exception{
         String inputDate = "03262023";
         int year = Integer.parseInt(inputDate.substring(4));
         int month = Integer.parseInt(inputDate.substring(0, 2));

@@ -29,7 +29,7 @@ class TreasureOfLife{
       description = "saving path",
       required = false
     )
-    private String savePath = "" ;
+    private String savePath = "." ;
 
     public static void main(String[] argv) throws IOException , Exception {
         TreasureOfLife treasureOfLife = new TreasureOfLife();
@@ -72,7 +72,6 @@ class TreasureOfLife{
         return true;
     }
     private boolean checkPathCorrect(String pathString){
-      if(pathString == "") return true;
       Path path = Paths.get(pathString);
       return Files.isWritable(path);
     }
