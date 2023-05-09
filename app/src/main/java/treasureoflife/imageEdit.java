@@ -28,6 +28,17 @@ public class imageEdit {
             System.exit(1);
         }
         double[] statusBars = cd.barsStatus(cd.SeperatedDate(dateStr), cd.yearRemaining(dateStr));
+        if(statusBars[0] != 0){
+            double barLengh = 220*(statusBars[0]/100);
+            barDraw.fillRect(50,161,(int)barLengh,5);
+        }
+        //Drawing bars
+        for(int i = 0 ; i < 10 ; i++){
+            if(statusBars[i] != 0) {
+                double barLengh = 220 * (statusBars[i] / 100);
+                barDraw.fillRect(50, 161 + i * 42, (int) barLengh, 5);
+            }
+        }
         ImageIO.write(image , "png" , new File(outputPath));
     }
 }
