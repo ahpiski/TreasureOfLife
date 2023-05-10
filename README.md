@@ -7,9 +7,9 @@ Switches :
 
 -o output path Ex: /home/age.png
 
--d date of birh
+-d date of birth
 
-date of birh should be ddmmyy formated!
+date of birth should be ddmmyy formated!
  
 
  Example : java -jar TreasureOfLife.jar -d 31032003 -o /home/amirhossein/output.png
