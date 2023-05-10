@@ -66,7 +66,7 @@ class TreasureOfLife{
     private void printhelp(){
         System.out.println("This software shows your age as a graph.\n" +
                 "The output must be png !\n" +
-                "Switches : \n-o output path Ex: /home/age.png\n-d date of birh\n date of birh should be ddmmyy formated!");
+                "Switches : \n-o output path Ex: /home/age.png\n-d date of birth\n date of birth should be ddmmyy formated!");
     }
 
     private boolean checkDateCorrect(String Date){
