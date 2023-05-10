@@ -3,10 +3,13 @@ An excuse to understand the value of life
 
 This software shows your age as a graph.
 
-Switches : 
+Switches :
+
 -o output path Ex: /home/age.png
+
 -d date of birh
- date of birh should be ddmmyy formated!
+
+date of birh should be ddmmyy formated!
  
 
  Example : java -jar TreasureOfLife.jar -d 31032003 -o /home/amirhossein/output.png
