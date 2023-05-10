@@ -13,4 +13,5 @@ Switches :
  
  Java version 17 is required
 
-![output](https://github.com/ahpiski/TreasureOfLife/assets/129966166/3e58e857-fc20-4c90-9ff8-937155404fd5)
+
+![output](https://github.com/ahpiski/TreasureOfLife/assets/129966166/3df36f55-4816-4157-9732-846b064109ad)
