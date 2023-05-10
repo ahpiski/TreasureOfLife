@@ -2,7 +2,7 @@
 An excuse to understand the value of life
 
 This software shows your age as a graph.
-The output must be a common image format.(png , jpeg , ...)
+
 Switches : 
 -o output path Ex: /home/age.png
 -d date of birh
