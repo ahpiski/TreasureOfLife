@@ -56,7 +56,7 @@ class TreasureOfLife{
             System.err.println("output path format incorrect or path is not acceptable !");
           }
           if(!treasureOfLife.checkDateCorrect(treasureOfLife.dateOfBirth)){
-            System.err.println("birth date format incorrect ! \n(changeme)");
+            System.err.println("birth date format incorrect !\nIt must have eight digits and be in the form of ddmmyy\n Example : 31032003");
           }
           System.exit(1);
         }
@@ -64,7 +64,9 @@ class TreasureOfLife{
     }
 
     private void printhelp(){
-        System.out.println("change me");
+        System.out.println("This software shows your age as a graph.\n" +
+                "The output must be a common image format.(png , jpeg , ...)\n" +
+                "Switches : \n-o output path Ex: /home/age.png\n-d date of birh\n date of birh should be ddmmyy formated!");
     }
 
     private boolean checkDateCorrect(String Date){
