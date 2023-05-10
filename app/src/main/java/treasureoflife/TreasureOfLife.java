@@ -22,7 +22,7 @@ class TreasureOfLife{
       description = "date of birth",
       required = false
     )
-    private int dateOfBirth = 0;
+    private String dateOfBirth = "";
 
     @Parameter(
       names = {"-o"},
@@ -43,11 +43,11 @@ class TreasureOfLife{
         }
         else if(treasureOfLife.checkPathCorrect(treasureOfLife.savePath) && treasureOfLife.checkDateCorrect(treasureOfLife.dateOfBirth)){
           imageEdit imageedit = new imageEdit();
-          imageedit.createImg(Integer.toString(treasureOfLife.dateOfBirth) , treasureOfLife.CreateFileIfPathIsDir(treasureOfLife.savePath));
+          imageedit.createImg(treasureOfLife.dateOfBirth, treasureOfLife.CreateFileIfPathIsDir(treasureOfLife.savePath));
           System.exit(0);
         }
 
-        else if(treasureOfLife.savePath == "" && treasureOfLife.dateOfBirth == 0){
+        else if(treasureOfLife.savePath == "" && treasureOfLife.dateOfBirth == ""){
           System.out.println("use -h or --help to get help :)");
           System.exit(1);
         }
@@ -67,13 +67,14 @@ class TreasureOfLife{
         System.out.println("change me");
     }
 
-    private boolean checkDateCorrect(int Date){
-        if(String.valueOf(Date).length() != 8) return false;
+    private boolean checkDateCorrect(String Date){
+        if(Date.length() != 8) return false;
         return true;
     }
-    private boolean checkPathCorrect(String pathString){
+    private boolean checkPathCorrect(String pathString) throws IOException{
       Path path = Paths.get(pathString);
-      return Files.isWritable(path);
+      File file = new File(pathString);
+      return Files.isWritable(path) || file.createNewFile();
     }
     private String CreateFileIfPathIsDir(String pathString) throws IOException {
         File file = new File(pathString);
