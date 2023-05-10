@@ -10,7 +10,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
 }
-
+archivesBaseName = 'TreasureOfLife'
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -25,6 +25,7 @@ dependencies {
 
     // https://mavenlibs.com/maven/dependency/com.beust/jcommander
     implementation 'com.beust:jcommander:1.82'
+    runtimeOnly 'com.beust:jcommander:1.82'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -42,4 +43,15 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+mainClassName = 'treasureoflife.TreasureOfLife'
+
+jar{
+    manifest{
+        attributes 'Main-Class' : mainClassName
+    }
+    from {
+        configurations.runtimeClasspath.collect({it.isDirectory() ? it :zipTree(it)})
+    }
 }
